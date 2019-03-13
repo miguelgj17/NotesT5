@@ -1,0 +1,160 @@
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-13 11:50:17 +0100
+
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rake db:migrate RAILS_ENV=development
+
+):
+  
+
+
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_source.erb (2.4ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (76.0ms)
+  Rendered /usr/lib/ruby/vendor_ruby/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /usr/lib/ruby/vendor_ruby/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /usr/lib/ruby/vendor_ruby/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/vendor_ruby/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /usr/lib/ruby/vendor_ruby/web_console/templates/console.js.erb within layouts/javascript (16.1ms)
+  Rendered /usr/lib/ruby/vendor_ruby/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/lib/ruby/vendor_ruby/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /usr/lib/ruby/vendor_ruby/web_console/templates/index.html.erb (40.0ms)
+  [1m[36m (102.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (104.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20190306111726)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "password" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190306111726"]]
+  [1m[35m (94.4ms)[0m  commit transaction
+Migrating to CreateNotes (20190306111837)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_notes_on_user_id" ON "notes" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20190306111837"]]
+  [1m[36m (87.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_notes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_notes_on_user_id' AND type='index'
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-13 11:51:00 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /usr/lib/ruby/vendor_ruby/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 41ms (Views: 23.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-13 12:12:15 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (41.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#index as HTML
+  [1m[35mNote Load (0.3ms)[0m  SELECT "notes".* FROM "notes"
+  Rendered notes/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 3115ms (Views: 3097.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/notes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2019-03-13 12:12:18 +0100
+
+
+Started GET "/assets/scaffolds.self-7293ef61ac228894a08fa3939eb9d411189fa4aa52d04190f69e0427e1e6a5cd.css?body=1" for 127.0.0.1 at 2019-03-13 12:12:18 +0100
+
+
+Started GET "/assets/notes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2019-03-13 12:12:18 +0100
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-13 12:12:22 +0100
+Processing by NotesController#new as HTML
+  Rendered notes/_form.html.erb (143.9ms)
+  Rendered notes/new.html.erb within layouts/application (174.8ms)
+Completed 200 OK in 263ms (Views: 259.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2019-03-13 12:12:38 +0100
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OV+u2bub8ajC+EuhD/i4cvxHq1v/LWvDkugcwLmsEUiqabQDWT2+aOUETt9w6/rcpxSXgksJ+6j0s3ho9HTiEw==", "note"=>{"text"=>"Hacer la comida", "user_id"=>"Mama"}, "commit"=>"Create Note"}
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "notes" ("text", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["text", "Hacer la comida"], ["user_id", 0], ["created_at", "2019-03-13 11:12:38.872209"], ["updated_at", "2019-03-13 11:12:38.872209"]]
+  [1m[36m (182.8ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/notes/1
+Completed 302 Found in 197ms (ActiveRecord: 184.3ms)
+
+
+Started GET "/notes/1" for 127.0.0.1 at 2019-03-13 12:12:39 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mNote Load (0.9ms)[0m  SELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 0]]
+  Rendered notes/show.html.erb within layouts/application (106.5ms)
+Completed 200 OK in 219ms (Views: 145.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/notes/1/edit" for 127.0.0.1 at 2019-03-13 12:12:55 +0100
+Processing by NotesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mNote Load (0.1ms)[0m  SELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered notes/_form.html.erb (1.5ms)
+  Rendered notes/edit.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 36ms (Views: 34.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/notes" for 127.0.0.1 at 2019-03-13 12:12:59 +0100
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.7ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered notes/index.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 66ms (Views: 63.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-13 12:13:30 +0100
+Processing by NotesController#index as HTML
+  [1m[36mNote Load (0.2ms)[0m  [1mSELECT "notes".* FROM "notes"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered notes/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 59ms (Views: 57.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-13 12:18:13 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#new as HTML
+  Rendered notes/_form.html.erb (11.1ms)
+  Rendered notes/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 170ms (Views: 154.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/notes/new" for 127.0.0.1 at 2019-03-13 12:53:02 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by NotesController#new as HTML
+  Rendered notes/_form.html.erb (64.4ms)
+  Rendered notes/new.html.erb within layouts/application (69.7ms)
+Completed 200 OK in 323ms (Views: 305.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/notes" for 127.0.0.1 at 2019-03-13 12:53:16 +0100
+Processing by NotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"15CDvcGHFSaKAXD6Y7r0FK99L0onY1AxmBk/cJanKOJEpplnIyFa5q39dYQcqba69C4Tk5NHwFr+QlvY23/buQ==", "note"=>{"text"=>"Base de datos", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fdcc5c178a8 @tempfile=#<Tempfile:/tmp/RackMultipart20190313-8580-13zgixm.png>, @original_filename="BBDD.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"note[image]\"; filename=\"BBDD.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Note"}
+Unpermitted parameter: image
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "notes" ("text", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["text", "Base de datos"], ["created_at", "2019-03-13 11:53:16.701692"], ["updated_at", "2019-03-13 11:53:16.701692"]]
+  [1m[35m (175.4ms)[0m  commit transaction
+Redirected to http://localhost:3000/notes/2
+Completed 302 Found in 181ms (ActiveRecord: 175.7ms)
+
+
+Started GET "/notes/2" for 127.0.0.1 at 2019-03-13 12:53:16 +0100
+Processing by NotesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNote Load (0.7ms)[0m  [1mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered notes/show.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 96ms (Views: 67.8ms | ActiveRecord: 0.7ms)
